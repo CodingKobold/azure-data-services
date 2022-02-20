@@ -11,7 +11,7 @@ namespace CodingKobold.DataStores.Api.Services
     public interface IRatedDaysService
     {
         IReadOnlyList<RatedDay> Get(RatedDayFilters filters);
-        bool Add(RatedDay day);
+        bool AddOrUpdate(RatedDay day);
     }
 
     internal class RatedDaysService : IRatedDaysService
@@ -42,10 +42,10 @@ namespace CodingKobold.DataStores.Api.Services
             return _tableEntityMapper.Map(entities);
         }
 
-        public bool Add(RatedDay day)
+        public bool AddOrUpdate(RatedDay day)
         {
             var dayEntity = _tableEntityMapper.Map(day);
-            var response = _tableClient.AddEntity(dayEntity);
+            var response = _tableClient.UpsertEntity(dayEntity);
             return !response.IsError;
         }
     }

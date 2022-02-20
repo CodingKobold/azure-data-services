@@ -23,8 +23,10 @@ ConfigureTableClientFactory(builder);
 
 // My Services
 builder.Services.AddScoped<IRatedDayTableEntityMapper, DayTableEntityMapper>();
-builder.Services.AddScoped<IRatedDaysService, RatedDaysService>();
 builder.Services.AddScoped<IRatedDaysTableFilterBuilder, RatedDaysTableFilterBuilder>();
+builder.Services.AddScoped<IRatedDaysService, RatedDaysService>();
+builder.Services.AddScoped<ISampleEntitiesService, SampleEntitiesService>();
+builder.Services.AddScoped<IDynamicEntitiesService, DynamicEntitiesService>();
 
 var app = builder.Build();
 

@@ -56,7 +56,7 @@ namespace CodingKobold.DataStores.Api.Builders
                 return member.Member.Name;
             }
 
-            throw new ArgumentException();
+            throw new ArgumentException("Unsupported column");
         }
 
         private static string? GetSortableString(object value)

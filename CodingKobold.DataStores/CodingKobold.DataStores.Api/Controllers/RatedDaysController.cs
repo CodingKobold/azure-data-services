@@ -15,7 +15,7 @@ namespace CodingKobold.DataStores.Api.Controllers
             _ratedDaysService = ratedDaysService;
         }
 
-        [HttpGet(Name = "")]
+        [HttpGet("")]
         public IEnumerable<RatedDay> Get(DateTime? dateFrom, DateTime? dateTo, RatedDayType? type)
         {
             RatedDayFilters? filters = new()
@@ -24,15 +24,14 @@ namespace CodingKobold.DataStores.Api.Controllers
                 DateTo = dateTo,
                 Type = type
             };
-            var days = _ratedDaysService.Get(filters);
-            return days;
+            
+            return _ratedDaysService.Get(filters);
         }
 
-        [HttpPost(Name = "")]
-        public bool Add(RatedDay model)
+        [HttpPost("")]
+        public bool AddOrUpdate(RatedDay model)
         {
-            var success = _ratedDaysService.Add(model);
-            return success;
+            return _ratedDaysService.AddOrUpdate(model);
         }
     }
 }

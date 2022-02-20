@@ -4,6 +4,7 @@
     {
         public const string RatedDays = "RatedDays";
         public const string Samples = "Samples";
+        public const string Dynamics = "Dynamics";
     }
 
     public static class ODataOperators
